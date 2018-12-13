@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import destinations from './Taxes';
 import './App.css';
+import CalculateTaxes from './components/CalculateTaxes/CalculateTaxes';
 
 class App extends Component {
   render() {
-    return <div className='App'>hello</div>;
+    return (
+      <div className='App'>
+        <CalculateTaxes
+          origin={11}
+          destination={16}
+          plan={'FaleMais30'}
+          minutes={60}
+        />
+      </div>
+    );
   }
 }
 
