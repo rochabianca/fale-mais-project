@@ -6,7 +6,7 @@ import CalculateTaxes from './CalculateTaxes';
 const defaultProps = {
   origin: 11,
   destination: 16,
-  plan: 'FaleMais30',
+  minutesGranted: 30,
   minutes: 60
 };
 const setup = (props = {}) => {
@@ -30,7 +30,7 @@ test('does not render a tax if does not exist a destination for the input origin
   const wrapper = setup({
     origin: 17,
     destination: 16,
-    plan: 'FaleMais30',
+    minutesGranted: 30,
     minutes: 60
   });
   const Taxes = findByTestAttr(wrapper, 'taxes');

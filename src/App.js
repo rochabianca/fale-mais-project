@@ -9,7 +9,7 @@ class App extends Component {
         <CalculateTaxes
           origin={11}
           destination={16}
-          plan={'FaleMais30'}
+          minutesGranted={30}
           minutes={60}
         />
       </div>
