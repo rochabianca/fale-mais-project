@@ -7,7 +7,7 @@ const destinations_16 = [{ destination: 11, tax: 2.9, faleMaisTax: 3.19 }];
 const destinations_17 = [{ destination: 11, tax: 2.7, faleMaisTax: 2.97 }];
 const destinations_18 = [{ destination: 11, tax: 1.9, faleMaisTax: 2.09 }];
 
-const destinations_taxes = origin => {
+const destinationsTaxes = origin => {
   switch (origin) {
     case 11: {
       return destinations_11;
@@ -27,4 +27,5 @@ const destinations_taxes = origin => {
   }
 };
 
-export default destinations_taxes;
+export const ddds = [11, 16, 17, 18];
+export default destinationsTaxes;

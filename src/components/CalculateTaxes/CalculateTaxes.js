@@ -3,7 +3,9 @@ import destinationTaxes from '../../DestinationTaxes';
 const CalculateTaxes = props => {
   const { origin, destination, minutesGranted, minutes } = props;
   let contents;
+  console.log(typeof origin);
   const taxes = destinationTaxes(origin);
+  console.log(taxes);
   if (taxes) {
     taxes.map(tax => {
       // TODO: Improove this logic
