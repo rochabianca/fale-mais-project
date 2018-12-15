@@ -5,10 +5,8 @@ const CalculateTaxes = props => {
   let contents;
   console.log(typeof origin);
   const taxes = destinationTaxes(origin);
-  console.log(taxes);
   if (taxes) {
     taxes.map(tax => {
-      // TODO: Improove this logic
       if (destination === tax.destination) {
         let faleMaisTax;
         if (minutes > minutesGranted) {
@@ -18,12 +16,11 @@ const CalculateTaxes = props => {
         } else {
           faleMaisTax = 0;
         }
-
         contents = (
           <div data-test='taxes'>
             Com Fale Mais: {faleMaisTax}
             <br />
-            Sem Fale Mais: {tax.tax * minutes}
+            Sem Fale Mais: {(tax.tax * minutes).toFixed(2)}
           </div>
         );
       }

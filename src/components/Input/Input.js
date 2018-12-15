@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { ddds } from '../../DestinationTaxes';
-import uuid from 'uuid';
 import CalculateTaxes from '../CalculateTaxes/CalculateTaxes';
 class Input extends Component {
   state = {
     origin: 11,
     destination: 16,
     minutes: 0,
-    minutesGranted: 30
+    minutesGranted: '30'
   };
+
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   render() {
     const { origin, destination, minutes, minutesGranted } = this.state;
@@ -20,8 +20,8 @@ class Input extends Component {
           value={origin}
           onChange={this.onChange}
         >
-          {ddds.map(origin => (
-            <option key={uuid()} value={origin}>
+          {ddds.map((origin, index) => (
+            <option key={index} value={origin}>
               0{origin}
             </option>
           ))}
@@ -33,8 +33,8 @@ class Input extends Component {
           value={destination}
           onChange={this.onChange}
         >
-          {ddds.map(destination => (
-            <option key={uuid()} value={destination}>
+          {ddds.map((destination, index) => (
+            <option key={index} value={destination}>
               0{destination}
             </option>
           ))}
@@ -51,6 +51,7 @@ class Input extends Component {
             type='radio'
             name='minutesGranted'
             value='30'
+            checked={minutesGranted === '30'}
             onChange={this.onChange}
           />
           FaleMais30
@@ -58,13 +59,15 @@ class Input extends Component {
             type='radio'
             name='minutesGranted'
             value='60'
+            checked={minutesGranted === '60'}
             onChange={this.onChange}
           />
           FaleMais60
           <input
             type='radio'
             name='minutesGranted'
-            value='120'
+            value={120}
+            checked={minutesGranted === '120'}
             onChange={this.onChange}
           />
           FaleMais120
