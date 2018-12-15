@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import destinationsTaxes, { ddds } from '../../DestinationTaxes';
+import { ddds } from '../../DestinationTaxes';
 import uuid from 'uuid';
 import CalculateTaxes from '../CalculateTaxes/CalculateTaxes';
 class Input extends Component {
@@ -70,10 +70,10 @@ class Input extends Component {
           FaleMais120
         </div>
         <CalculateTaxes
-          origin={origin}
-          destination={destination}
-          minutes={minutes}
-          minutesGranted={minutesGranted}
+          origin={parseInt(origin)}
+          destination={parseInt(destination)}
+          minutes={parseFloat(minutes)}
+          minutesGranted={parseFloat(minutesGranted)}
         />
       </div>
     );
