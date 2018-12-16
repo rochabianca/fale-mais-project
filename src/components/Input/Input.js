@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import { ddds } from '../../DestinationTaxes';
 import CalculateTaxes from '../CalculateTaxes/CalculateTaxes';
-let taxes = <div>Click 'show me' to see</div>;
 class Input extends Component {
   state = {
     origin: 11,
     destination: 16,
     minutes: 0,
-    minutesGranted: '30'
+    minutesGranted: '30',
+    taxesToShow: {}
   };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   onSubmit = ({ origin, destination, minutes, minutesGranted }, e) => {
     e.preventDefault();
-    taxes = () => (
-      <CalculateTaxes
-        origin={parseInt(origin)}
-        destination={parseInt(destination)}
-        minutes={parseFloat(minutes)}
-        minutesGranted={parseFloat(minutesGranted)}
-      />
-    );
-
-    console.log(taxes);
+    this.setState({
+      taxesToShow: {
+        origin,
+        destination,
+        minutes,
+        minutesGranted
+      }
+    });
   };
 
   render() {
-    const { origin, destination, minutes, minutesGranted } = this.state;
+    const {
+      origin,
+      destination,
+      minutes,
+      minutesGranted,
+      taxesToShow
+    } = this.state;
     return (
       <div data-test='input-component'>
         <form onSubmit={this.onSubmit.bind(this, this.state)}>
@@ -88,7 +92,12 @@ class Input extends Component {
           </div>
           <button type='submit'>Show ME</button>
         </form>
-        <div>{taxes}</div>
+        <CalculateTaxes
+          origin={parseInt(taxesToShow.origin)}
+          destination={parseInt(taxesToShow.destination)}
+          minutes={parseFloat(taxesToShow.minutes)}
+          minutesGranted={parseFloat(taxesToShow.minutesGranted)}
+        />
       </div>
     );
   }

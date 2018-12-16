@@ -1,6 +1,5 @@
 import React from 'react';
 import destinationTaxes from '../../DestinationTaxes';
-let lastMinute = null;
 
 const CalculateTaxes = props => {
   const { origin, destination, minutesGranted, minutes } = props;
