@@ -1,9 +1,10 @@
 import React from 'react';
 import destinationTaxes from '../../DestinationTaxes';
+let lastMinute = null;
+
 const CalculateTaxes = props => {
   const { origin, destination, minutesGranted, minutes } = props;
   let contents;
-  console.log(typeof origin);
   const taxes = destinationTaxes(origin);
   if (taxes) {
     taxes.map(tax => {
@@ -26,7 +27,6 @@ const CalculateTaxes = props => {
       }
     });
   }
-  console.log(taxes);
   return <div data-test='component-calculate-taxes'>{contents}</div>;
 };
 
