@@ -15,30 +15,36 @@ class Input extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   onSubmit = ({ origin, destination, minutes, minutesGranted }, e) => {
     e.preventDefault();
+    // improve this, because it's HUGE
     const finaltaxes = CalculateTaxes(
-      origin,
-      destination,
-      minutes,
-      minutesGranted
+      parseInt(origin),
+      parseInt(destination),
+      parseFloat(minutes),
+      parseInt(minutesGranted)
     );
-    console.log(finaltaxes);
-    // const db = firebase.firestore();
-    // db.settings({
-    //   timestampsInSnapshots: true
-    // });
-    // const entryRef = db.collection("entries").add({
-    //   origin: origin,
-    //   destination: destination,
-    //   plain: `FaleMais ${minutesGranted}`
-    //   fixedTax:
-    // })
+    const db = firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    const d = new Date();
+    let min = d.getMinutes();
+    if (min < 10) {
+      min = '0' + min;
+    }
+    const date = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} - ${d.getHours()}:${min}:${d.getSeconds()}`;
+    if (parseFloat(minutes) > 0) {
+      const entryRef = db.collection('entries').add({
+        origin: origin,
+        destination: destination,
+        plain: `FaleMais ${minutesGranted}`,
+        fixedTax: finaltaxes.fixed,
+        faleMaisTax: finaltaxes.faleMais,
+        created_at: date
+      });
+    }
+
     this.setState({
-      taxesToShow: {
-        origin,
-        destination,
-        minutes,
-        minutesGranted
-      }
+      taxesToShow: finaltaxes
     });
   };
 
@@ -112,12 +118,7 @@ class Input extends Component {
           </div>
           <button type='submit'>Show ME</button>
         </form>
-        <ShowTaxes
-          origin={parseInt(taxesToShow.origin)}
-          destination={parseInt(taxesToShow.destination)}
-          minutes={parseFloat(taxesToShow.minutes)}
-          minutesGranted={parseFloat(taxesToShow.minutesGranted)}
-        />
+        <ShowTaxes taxes={taxesToShow} />
       </div>
     );
   }
