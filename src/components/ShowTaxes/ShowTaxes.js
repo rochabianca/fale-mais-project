@@ -1,7 +1,7 @@
 import React from 'react';
-import destinationTaxes from '../../DestinationTaxes';
+import destinationTaxes from '../../utils/DestinationTaxes';
 
-const CalculateTaxes = props => {
+const ShowTaxes = props => {
   const { origin, destination, minutesGranted, minutes } = props;
   let contents;
   const taxes = destinationTaxes(origin);
@@ -26,7 +26,7 @@ const CalculateTaxes = props => {
       }
     });
   }
-  return <div data-test='component-calculate-taxes'>{contents}</div>;
+  return <div data-test='component-show-taxes'>{contents}</div>;
 };
 
-export default CalculateTaxes;
+export default ShowTaxes;

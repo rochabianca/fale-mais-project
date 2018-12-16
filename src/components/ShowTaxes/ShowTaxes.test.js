@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAttr } from '../../testUtils';
-import CalculateTaxes from './CalculateTaxes';
+import ShowTaxes from './ShowTaxes';
 
 const defaultProps = {
   origin: 11,
@@ -11,12 +11,12 @@ const defaultProps = {
 };
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
-  return shallow(<CalculateTaxes {...setupProps} />);
+  return shallow(<ShowTaxes {...setupProps} />);
 };
 
 test('renders without error', () => {
   const wrapper = setup();
-  const component = findByTestAttr(wrapper, 'component-calculate-taxes');
+  const component = findByTestAttr(wrapper, 'component-show-taxes');
   expect(component.length).toBe(1);
 });
 

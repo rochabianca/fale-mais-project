@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { ddds } from '../../DestinationTaxes';
-import CalculateTaxes from '../CalculateTaxes/CalculateTaxes';
+import { ddds } from '../../utils/DestinationTaxes';
+import ShowTaxes from '../ShowTaxes/ShowTaxes';
+import CalculateTaxes from '../../utils/CalculateTaxes';
+import firebase from '../../utils/firebaseUtils';
+
 class Input extends Component {
   state = {
     origin: 11,
@@ -12,6 +15,23 @@ class Input extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   onSubmit = ({ origin, destination, minutes, minutesGranted }, e) => {
     e.preventDefault();
+    const finaltaxes = CalculateTaxes(
+      origin,
+      destination,
+      minutes,
+      minutesGranted
+    );
+    console.log(finaltaxes);
+    // const db = firebase.firestore();
+    // db.settings({
+    //   timestampsInSnapshots: true
+    // });
+    // const entryRef = db.collection("entries").add({
+    //   origin: origin,
+    //   destination: destination,
+    //   plain: `FaleMais ${minutesGranted}`
+    //   fixedTax:
+    // })
     this.setState({
       taxesToShow: {
         origin,
@@ -92,7 +112,7 @@ class Input extends Component {
           </div>
           <button type='submit'>Show ME</button>
         </form>
-        <CalculateTaxes
+        <ShowTaxes
           origin={parseInt(taxesToShow.origin)}
           destination={parseInt(taxesToShow.destination)}
           minutes={parseFloat(taxesToShow.minutes)}
