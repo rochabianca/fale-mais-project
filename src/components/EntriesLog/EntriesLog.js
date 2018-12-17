@@ -19,6 +19,18 @@ export default class EntriesLog extends Component {
     this.setState({ data });
   }
   render() {
-    return <div>Hello</div>;
+    const { data } = this.state;
+    console.log(data.length);
+    if (data.length > 0) {
+      return (
+        <div>
+          {data.map(entry => (
+            <div>entry</div>
+          ))}
+        </div>
+      );
+    } else {
+      return <div>Loading</div>;
+    }
   }
 }
