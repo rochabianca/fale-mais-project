@@ -1,7 +1,7 @@
 import destinationsTaxes from './DestinationTaxes';
 
 const CalculateTaxes = (origin, destination, minutes, minutesGranted) => {
-  let finalTaxes = {};
+  let finalTaxes = { faleMais: ' - ', fixed: ' - ' };
   const taxes = destinationsTaxes(origin);
   console.log(destination);
   if (taxes) {
