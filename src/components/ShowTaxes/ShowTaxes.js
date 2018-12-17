@@ -3,7 +3,6 @@ import React from 'react';
 const ShowTaxes = props => {
   const { taxes } = props;
   let contents;
-  console.log(taxes);
   if (taxes.fixed) {
     contents = (
       <div data-test='taxes'>

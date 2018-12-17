@@ -3,7 +3,6 @@ import destinationsTaxes from './DestinationTaxes';
 const CalculateTaxes = (origin, destination, minutes, minutesGranted) => {
   let finalTaxes = { faleMais: ' - ', fixed: ' - ' };
   const taxes = destinationsTaxes(origin);
-  console.log(destination);
   if (taxes) {
     taxes.map(tax => {
       if (destination === tax.destination) {
@@ -17,7 +16,6 @@ const CalculateTaxes = (origin, destination, minutes, minutesGranted) => {
           faleMaisTax = 0;
         }
         finalTaxes = { faleMais: faleMaisTax, fixed: fixedTax };
-        console.log(finalTaxes);
         return finalTaxes;
       }
     });

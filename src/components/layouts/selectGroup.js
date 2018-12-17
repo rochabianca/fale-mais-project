@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SelectGroup = ({ name, value, onChange, ddds }) => {
   return (
@@ -10,6 +11,13 @@ const SelectGroup = ({ name, value, onChange, ddds }) => {
       ))}
     </select>
   );
+};
+
+SelectGroup.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  ddds: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default SelectGroup;

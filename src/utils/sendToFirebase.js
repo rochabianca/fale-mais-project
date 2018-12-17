@@ -9,11 +9,7 @@ const sendToFirebase = (
   finaltaxes
 ) => {
   const db = firebase.firestore();
-  db.settings({
-    timestampsInSnapshots: true
-  });
   const date = getCurrentDate();
-  console.log(date);
   if (parseFloat(minutes) > 0) {
     db.collection('entries').add({
       origin: `0${origin}`,
