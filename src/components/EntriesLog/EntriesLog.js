@@ -5,7 +5,7 @@ import firebase from "../../utils/firebaseUtils";
 class EntriesLog extends Component {
   render() {
     return (
-      <FirestoreProvider firebase={firebase}>
+      <FirestoreProvider firebase={firebase} useTimestampsInSnapshots>
         <FirestoreCollection
           path="entries"
           sort="created_at:desc"
