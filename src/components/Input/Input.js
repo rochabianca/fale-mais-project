@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { ddds } from '../../utils/DestinationTaxes';
-import CalculateTaxes from '../../utils/CalculateTaxes';
-import sendToFirebase from '../../utils/sendToFirebase';
+import { ddds } from "../../utils/DestinationTaxes";
+import CalculateTaxes from "../../utils/CalculateTaxes";
+import sendToFirebase from "../../utils/sendToFirebase";
 
-import ShowTaxes from '../ShowTaxes/ShowTaxes';
-import SelectGroup from '../layouts/SelectGroup';
-
+import ShowTaxes from "../ShowTaxes/ShowTaxes";
+import SelectGroup from "../layouts/SelectGroup";
 class Input extends Component {
   state = {
     origin: 11,
     destination: 16,
     minutes: 0,
-    minutesGranted: '30',
+    minutesGranted: "30",
     taxesToShow: {}
   };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -41,56 +40,56 @@ class Input extends Component {
       taxesToShow
     } = this.state;
     return (
-      <div data-test='input-component'>
+      <div data-test="input-component">
         <form onSubmit={this.onSubmit.bind(this, this.state)}>
           <SelectGroup
-            name='origin'
+            name="origin"
             value={parseInt(origin)}
             onChange={this.onChange}
             ddds={ddds}
           />
 
           <SelectGroup
-            name='destination'
-            id='destination'
+            name="destination"
+            id="destination"
             value={parseInt(destination)}
             onChange={this.onChange}
             ddds={ddds.filter(ddd => ddd !== parseInt(origin))}
           />
 
           <input
-            type='number'
-            name='minutes'
+            type="number"
+            name="minutes"
             value={minutes}
             onChange={this.onChange}
           />
-          <div className='plan'>
+          <div className="plan">
             <input
-              type='radio'
-              name='minutesGranted'
-              value='30'
-              checked={minutesGranted === '30'}
+              type="radio"
+              name="minutesGranted"
+              value="30"
+              checked={minutesGranted === "30"}
               onChange={this.onChange}
             />
             FaleMais30
             <input
-              type='radio'
-              name='minutesGranted'
-              value='60'
-              checked={minutesGranted === '60'}
+              type="radio"
+              name="minutesGranted"
+              value="60"
+              checked={minutesGranted === "60"}
               onChange={this.onChange}
             />
             FaleMais60
             <input
-              type='radio'
-              name='minutesGranted'
-              value='120'
-              checked={minutesGranted === '120'}
+              type="radio"
+              name="minutesGranted"
+              value="120"
+              checked={minutesGranted === "120"}
               onChange={this.onChange}
             />
             FaleMais120
           </div>
-          <button type='submit'>Show ME</button>
+          <button type="submit">Show ME</button>
         </form>
         <ShowTaxes taxes={taxesToShow} />
       </div>
