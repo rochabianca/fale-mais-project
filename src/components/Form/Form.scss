@@ -1,0 +1,85 @@
+.form__input {
+  padding: 5px 10px;
+  width: 70px;
+  border: 1px solid #eee;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form__label {
+  text-transform: capitalize;
+}
+
+.form__radios {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.form__input__label {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 2em;
+  height: 1.5em;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.form__input__label::before,
+.form__input__label::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+}
+.form__input__label::before {
+  content: ' ';
+  border: 2px solid #bdc3c7;
+  border-radius: 20%;
+}
+
+input[type='radio'] + .form__input__label::before {
+  border-radius: 50%;
+}
+
+input[type='radio'] + .form__input__label::after {
+  content: ' ';
+  top: 0.25em;
+  left: 0.25em;
+  width: 1em;
+  height: 1em;
+  background: #fff;
+  border: 0.2em solid #2c3e50;
+  border-radius: 50%;
+}
+/* :checked */
+input[type='radio']:checked + .form__input__label::before {
+  background: #2c3e50;
+  border-color: #2c3e50;
+}
+input[type='radio'] + .form__input__label::after {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+input[type='radio']:checked + .form__input__label::after {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+/* Transition */
+.form__input__label::before,
+.form__input__label::after {
+  -webkit-transition: 0.25s all ease;
+  -o-transition: 0.25s all ease;
+  transition: 0.25s all ease;
+}
