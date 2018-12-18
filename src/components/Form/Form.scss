@@ -1,3 +1,10 @@
+$dark-purple: #91eae4;
+
+.form {
+  max-width: 380px;
+  margin: 25% 25px 0 auto;
+}
+
 .form__input {
   padding: 5px 10px;
   width: 70px;
@@ -6,12 +13,13 @@
 }
 
 .form__label {
+  display: block;
   text-transform: capitalize;
+  margin: 15px 0 5px 0;
 }
 
 .form__radios {
   display: flex;
-  flex-direction: column;
   flex-wrap: nowrap;
 }
 
@@ -24,10 +32,11 @@ input[type='radio'] {
 .form__input__label {
   position: relative;
   display: inline-block;
-  padding: 0 0 0 2em;
+  padding: 3px 0 0 29px;
   height: 1.5em;
   line-height: 1.5;
   cursor: pointer;
+  margin-right: 25px;
 }
 .form__input__label::before,
 .form__input__label::after {
@@ -50,18 +59,18 @@ input[type='radio'] + .form__input__label::before {
 
 input[type='radio'] + .form__input__label::after {
   content: ' ';
-  top: 0.25em;
-  left: 0.25em;
+  top: 0.2em;
+  left: 0.22em;
   width: 1em;
   height: 1em;
-  background: #fff;
-  border: 0.2em solid #2c3e50;
+  background: $dark-purple;
+  border: 0.2em solid $dark-purple;
   border-radius: 50%;
 }
 /* :checked */
 input[type='radio']:checked + .form__input__label::before {
-  background: #2c3e50;
-  border-color: #2c3e50;
+  background: $dark-purple;
+  border-color: $dark-purple;
 }
 input[type='radio'] + .form__input__label::after {
   -webkit-transform: scale(0);
@@ -82,4 +91,18 @@ input[type='radio']:checked + .form__input__label::after {
   -webkit-transition: 0.25s all ease;
   -o-transition: 0.25s all ease;
   transition: 0.25s all ease;
+}
+
+.form__bg {
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+  height: 100vh;
+}
+
+.btn--form {
+  margin-top: 15px;
+  background: #7f7fd5;
+
+  &:hover {
+    background: #86a8e7;
+  }
 }

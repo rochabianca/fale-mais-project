@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './vendor/css/bootstrap-grid.min.css';
+import './vendor/css/naked.min.css';
 import './App.css';
 import Form from './components/Form/Form';
 import EntriesLog from './components/EntriesLog/EntriesLog';

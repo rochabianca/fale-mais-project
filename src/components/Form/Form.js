@@ -43,9 +43,12 @@ class Form extends Component {
       taxesToShow
     } = this.state;
     return (
-      <React.Fragment>
-        <div data-test='input-component'>
-          <form onSubmit={this.onSubmit.bind(this, this.state)}>
+      <div data-test='input-component' className='grid'>
+        <div className='grid__column grid__column--6'>
+          <form
+            className='form'
+            onSubmit={this.onSubmit.bind(this, this.state)}
+          >
             <SelectGroup
               name='origin'
               value={parseInt(origin)}
@@ -108,11 +111,15 @@ class Form extends Component {
                 </label>
               </div>
             </div>
-            <button type='submit'>Show ME</button>
+            <button className='btn btn--block btn--form' type='submit'>
+              Calcular
+            </button>
           </form>
+        </div>
+        <div className='grid__column grid__column--6 form__bg'>
           <ShowTaxes taxes={taxesToShow} />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
