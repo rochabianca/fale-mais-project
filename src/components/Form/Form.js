@@ -8,6 +8,7 @@ import ShowTaxes from '../ShowTaxes/ShowTaxes';
 import SelectGroup from '../layouts/SelectGroup/SelectGroup';
 
 import './Form.min.css';
+import Logo from '../layouts/Logo/Logo';
 
 class Form extends Component {
   state = {
@@ -45,6 +46,7 @@ class Form extends Component {
     return (
       <div data-test='input-component' className='grid'>
         <div className='grid__column grid__column--6'>
+          <Logo />
           <form
             className='form'
             onSubmit={this.onSubmit.bind(this, this.state)}
