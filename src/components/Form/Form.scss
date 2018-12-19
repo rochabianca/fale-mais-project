@@ -106,3 +106,11 @@ input[type='radio']:checked + .form__input__label::after {
     background: #86a8e7;
   }
 }
+
+.form__link {
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}

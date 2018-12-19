@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { ddds } from '../../utils/DestinationTaxes';
 import CalculateTaxes from '../../utils/CalculateTaxes';
@@ -120,6 +121,9 @@ class Form extends Component {
         </div>
         <div className='grid__column grid__column--6 form__bg'>
           <ShowTaxes taxes={taxesToShow} />
+          <Link className='form__link' to='/EntriesLog'>
+            Log
+          </Link>
         </div>
       </div>
     );
