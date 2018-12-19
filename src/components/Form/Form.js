@@ -10,6 +10,7 @@ import SelectGroup from '../layouts/SelectGroup/SelectGroup';
 
 import './Form.min.css';
 import Logo from '../layouts/Logo/Logo';
+import RadioInputs from '../layouts/RadioInputs/RadioInputs';
 
 class Form extends Component {
   state = {
@@ -76,44 +77,10 @@ class Form extends Component {
               onChange={this.onChange}
               className='form__input'
             />
-            <div className='plan'>
-              <label className='form__label'>escolha o seu plano</label>
-              <div className='form__radios'>
-                <input
-                  type='radio'
-                  name='minutesGranted'
-                  value='30'
-                  checked={minutesGranted === '30'}
-                  onChange={this.onChange}
-                  id='faleMais30'
-                />
-                <label htmlFor='faleMais30' className='form__input__label'>
-                  FaleMais30
-                </label>
-                <input
-                  type='radio'
-                  name='minutesGranted'
-                  value='60'
-                  checked={minutesGranted === '60'}
-                  onChange={this.onChange}
-                  id='faleMais60'
-                />
-                <label htmlFor='faleMais60' className='form__input__label'>
-                  FaleMais60
-                </label>
-                <input
-                  type='radio'
-                  name='minutesGranted'
-                  value='120'
-                  checked={minutesGranted === '120'}
-                  onChange={this.onChange}
-                  id='faleMais120'
-                />
-                <label className='form__input__label' htmlFor='faleMais120'>
-                  FaleMais120
-                </label>
-              </div>
-            </div>
+            <RadioInputs
+              minutesGranted={minutesGranted}
+              onChange={this.onChange}
+            />
             <button className='btn btn--block btn--form' type='submit'>
               Calcular
             </button>
