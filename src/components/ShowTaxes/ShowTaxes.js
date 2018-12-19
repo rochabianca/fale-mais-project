@@ -4,13 +4,13 @@ import './ShowTaxes.min.css';
 const ShowTaxes = props => {
   const { taxes } = props;
   let contents;
-  if (taxes.fixed === 0) {
+  if (taxes && taxes.fixed === 0) {
     contents = (
-      <div className='ShowTaxes__text'>
+      <div data-test='taxes' className='ShowTaxes__text'>
         Por favor, selecione quantos minutos você quer falar por mês!
       </div>
     );
-  } else if (taxes.fixed && taxes.fixed !== ' - ') {
+  } else if (taxes && taxes.fixed && taxes.fixed !== ' - ') {
     contents = (
       <div data-test='taxes' className='ShowTaxes__text'>
         <p className='ShowTaxes__promo'>
@@ -29,7 +29,7 @@ const ShowTaxes = props => {
         ) : null}
       </div>
     );
-  } else if (taxes.fixed === ' - ') {
+  } else if (taxes && taxes.fixed === ' - ') {
     contents = (
       <div className='ShowTaxes__text'>
         Desculpe, ainda não cobrimos essa origem e destino :(

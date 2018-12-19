@@ -4,10 +4,10 @@ import { findByTestAttr } from '../../testUtils';
 import ShowTaxes from './ShowTaxes';
 
 const defaultProps = {
-  origin: 11,
-  destination: 16,
-  minutesGranted: 30,
-  minutes: 60
+  taxes: {
+    falemais: 20,
+    fixed: 38
+  }
 };
 const setup = (props = {}) => {
   const setupProps = { ...defaultProps, ...props };
@@ -25,16 +25,3 @@ test('does render a tax if exists a destination for the input origin', () => {
   const Taxes = findByTestAttr(wrapper, 'taxes');
   expect(Taxes.length).toBe(1);
 });
-
-test('does not render a tax if does not exist a destination for the input origin', () => {
-  const wrapper = setup({
-    origin: 17,
-    destination: 16,
-    minutesGranted: 30,
-    minutes: 60
-  });
-  const Taxes = findByTestAttr(wrapper, 'taxes');
-  expect(Taxes.length).toBe(0);
-});
-
-test('renders 0 for FaleMaisPlans if the minutes are inside the franchise', () => {});
