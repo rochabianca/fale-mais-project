@@ -1,22 +1,53 @@
 import React from 'react';
+import './ShowTaxes.min.css';
 
 const ShowTaxes = props => {
   const { taxes } = props;
   let contents;
-  if (taxes.fixed) {
+  if (taxes.fixed === 0) {
     contents = (
-      <div data-test='taxes'>
-        Com Fale Mais: {taxes.faleMais}
-        <br />
-        Sem Fale Mais: {taxes.fixed}
-        <br />
+      <div className='ShowTaxes__text'>
+        Por favor, selecione quantos minutos você quer falar por mês!
+      </div>
+    );
+  } else if (taxes.fixed && taxes.fixed !== ' - ') {
+    contents = (
+      <div data-test='taxes' className='ShowTaxes__text'>
+        <p className='ShowTaxes__promo'>
+          Com Fale Mais: <b className='ShowTaxes__price'>$ {taxes.faleMais}</b>
+        </p>
+        <p className='ShowTaxes__normal'>
+          Sem Fale Mais: <b className='ShowTaxes__price'>$ {taxes.fixed}</b>
+        </p>
+
+        {taxes.fixed > taxes.faleMais ? (
+          <p className='ShowTaxes__savings'>
+            Com a FaleMais você economizará{' '}
+            <b className='ShowTaxes__price'>$ {taxes.fixed - taxes.faleMais}</b>{' '}
+            em apenas um mês!
+          </p>
+        ) : null}
+      </div>
+    );
+  } else if (taxes.fixed === ' - ') {
+    contents = (
+      <div className='ShowTaxes__text'>
+        Desculpe, ainda não cobrimos essa origem e destino :(
       </div>
     );
   } else {
-    contents = <div>Click em 'Show Me' para ver</div>;
+    contents = (
+      <div className='ShowTaxes__text'>
+        Clique em Calcular e descubra o plano que mais combina com você!
+      </div>
+    );
   }
 
-  return <div data-test='component-show-taxes'>{contents}</div>;
+  return (
+    <div className='ShowTaxes' data-test='component-show-taxes'>
+      {contents}
+    </div>
+  );
 };
 
 export default ShowTaxes;
