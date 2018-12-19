@@ -1,5 +1,5 @@
 $background: #fff;
-$font-color: #444;
+$font-color: #333;
 
 .EntriesLog {
   font-weight: 400;
@@ -25,7 +25,7 @@ $font-color: #444;
     color: white;
     font-size: 15px;
     padding: 15px 30px;
-    background: #4e5066;
+    background: #7f7fd5;
   }
   tbody tr {
     background: white;
@@ -38,8 +38,7 @@ $font-color: #444;
     background: #ebebeb;
   }
   tr:hover td {
-    color: white;
-    background: #4e5066;
+    background: #91eae4;
   }
 }
 
