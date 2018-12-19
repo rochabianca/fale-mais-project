@@ -1,6 +1,11 @@
+@import '../../vendor/scss/easy_media_queries.scss';
+
 .form {
   max-width: 380px;
   margin: 20% 25px 0 auto;
+  @include d(s) {
+    margin: 20% 25px 0 25px;
+  }
 }
 
 .form__input {
@@ -36,4 +41,8 @@
   position: absolute;
   right: 25px;
   top: 10px;
+  @include d(s) {
+    color: #ddd;
+    top: 18px;
+  }
 }

@@ -1,6 +1,11 @@
+@import '../../vendor/scss/easy_media_queries.scss';
+
 .ShowTaxes {
   margin-top: 28%;
   max-width: 700px;
+  @include d(s) {
+    margin: 20% auto;
+  }
 }
 
 .ShowTaxes__text {

@@ -1,4 +1,5 @@
-$dark-purple: #91eae4;
+@import '../../../vendor/scss/easy_media_queries.scss';
+$background: #91eae4;
 
 .RadioInputs {
   display: flex;
@@ -11,6 +12,12 @@ input[type='radio'] {
   z-index: -1;
 }
 
+label {
+  @include d(s) {
+    font-size: 11px;
+  }
+}
+
 .RadioInputs__label {
   position: relative;
   display: inline-block;
@@ -19,6 +26,10 @@ input[type='radio'] {
   line-height: 1.5;
   cursor: pointer;
   margin-right: 25px;
+  @include d(s) {
+    margin-right: 10px;
+    padding-left: 26px;
+  }
 }
 .RadioInputs__label::before,
 .RadioInputs__label::after {
@@ -45,15 +56,15 @@ input[type='radio'] + .RadioInputs__label::after {
   left: 0.22em;
   width: 1em;
   height: 1em;
-  background: $dark-purple;
-  border: 0.2em solid $dark-purple;
+  background: $background;
+  border: 0.2em solid $background;
   border-radius: 50%;
 }
 
 /* :checked */
 input[type='radio']:checked + .RadioInputs__label::before {
-  background: $dark-purple;
-  border-color: $dark-purple;
+  background: $background;
+  border-color: $background;
 }
 input[type='radio'] + .RadioInputs__label::after {
   -webkit-transform: scale(0);
